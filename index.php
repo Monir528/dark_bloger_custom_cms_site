@@ -15,7 +15,7 @@
                             if(mysqli_num_rows($result) > 0){
                                 while($row = mysqli_fetch_assoc($result)){
                         ?>
-                                    <div class="post-content">
+                                    <div class="post-content"> 
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="single.php?post=<?php echo $row['p_id'];?>"><img src="admin/upload/<?php echo $row['p_image'];?>" alt=""/></a>

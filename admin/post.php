@@ -15,7 +15,7 @@
         $sql = "DELETE FROM post WHERE p_id = {$u};";
         if(mysqli_query($connection,$sql)){
             unlink("upload/".$p_image);
-            header("Location: http://localhost/PHP/Project/news/Self/admin/post.php?user=1");
+            header("Location: http://localhost/PHP/Project/news/Blog_Site/admin/post.php?user=1");
         }
     }
 

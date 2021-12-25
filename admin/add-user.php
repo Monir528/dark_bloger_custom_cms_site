@@ -16,7 +16,7 @@
         if(mysqli_num_rows($result)==0){
             $query = "INSERT INTO users(first_name,last_name,username,password,role) VALUES('{$first_name}','{$last_name}','{$user_name}','{$password}',{$role})";
             if(mysqli_query($connection,$query)){
-                header("Location: http://{$hostname}/PHP/Project/news/Self/admin/users.php");
+                header("Location: http://{$hostname}/PHP/Project/news/Blog_Site/admin/users.php");
             }
         }else{
             echo "<div class='alert alert-danger'>user already exits</div>";

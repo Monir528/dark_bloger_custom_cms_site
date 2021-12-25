@@ -74,7 +74,7 @@ img.logo{
     margin: 0 5px 0 0;
 }
 #admin-menubar .admin-menu li a{
-    color: #1E90FF;
+    color: #333;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
@@ -84,8 +84,8 @@ img.logo{
 }
 
 #admin-menubar .admin-menu li a:hover{
-    color: #fff;
-    background-color: #1E90FF;
+    color: #333;
+    background-color: rgb(226, 226, 226);
 }
 
 #admin-content{
@@ -100,7 +100,7 @@ img.logo{
 
 #admin-content .add-new{
     color: #fff;
-    background-color: #1E90FF;
+    background-color: #333;
     font-size: 15px;
     font-weight: 600;
     text-align: center;
@@ -111,8 +111,9 @@ img.logo{
     transition: all 0.3s;
 }
 #admin-content .add-new:hover{
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 3px rgb(88, 88, 88);
     box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    background: rgb(134, 134, 134);
 }
 
 #admin-content .content-table{

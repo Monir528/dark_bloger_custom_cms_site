@@ -10,7 +10,7 @@
         $update_query = "UPDATE users SET first_name = '{$f_name}', last_name = '{$l_name}', username = '{$username}', role = {$role} WHERE id = {$id}";
         $res =  mysqli_query($connection, $update_query) or die("Query Failed");
         if($res){
-            header("Location: http://{$hostname}/PHP/Project/news/Self/admin/users.php");
+            header("Location: http://{$hostname}/PHP/Project/news/Blog_Site/admin/users.php");
         }
         die();
     }

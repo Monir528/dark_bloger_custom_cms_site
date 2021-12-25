@@ -15,7 +15,7 @@
             include("config.php");
             session_start();
             if(isset($_SESSION['user_name'])){
-                header("Location: http://{$hostname}//PHP/Project/news/Self/admin/users.php?user=1");
+                header("Location: http://{$hostname}/PHP/Project/news/Blog_Site/admin/users.php?user=1");
                 die();
             }
 
@@ -35,7 +35,7 @@
                             $_SESSION['user_id'] = $rows['id'];
                             $_SESSION['user_name'] = $rows['username'];
                             $_SESSION['user_role'] = $rows['role'];
-                            header("Location: http://{$hostname}/PHP/Project/news/Self/admin/users.php?user=1");
+                            header("Location: http://{$hostname}/PHP/Project/news/Blog_Site/admin/users.php?user=1");
                         }
                     }else{
                         echo "<div class='alert alert-danger'>Login Failed</div>";

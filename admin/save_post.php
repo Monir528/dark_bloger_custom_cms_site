@@ -35,7 +35,7 @@
 
         $result = mysqli_multi_query($connection, $sql);
         if($result){
-            header("location: http://localhost//PHP/Project/news/Self/admin/post.php");
+            header("location: http://localhost//PHP/Project/news/Blog_Site/admin/post.php");
         }else{
             echo "Query failed!";
         }

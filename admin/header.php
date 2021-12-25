@@ -17,7 +17,7 @@
         <?php 
             session_start();
             if(!isset($_SESSION['user_name'])){
-                header("Location: http://localhost/PHP/Project/news/Self/admin/");
+                header("Location: http://localhost/PHP/Project/news/Blog_Site/admin/");
             }
         ?>
         <!-- HEADER -->
@@ -28,7 +28,7 @@
                 <div class="row">
                     <!-- LOGO -->
                     <div class="col-md-2">
-                        <a href="../index.php"><img class="logo" src="images/news.jpg"></a>
+                        <a href="./" id="logo" class="h3"><b>DARKBLOG</b></a>
                     </div>
                     <!-- /LOGO -->
                       <!-- LOGO-Out -->
