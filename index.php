@@ -1,16 +1,18 @@
 <?php include 'header.php'; 
-        include 'admin/config.php';
+        $def  = 5;
+        $current_page = (isset($_GET['user']))?$_GET['user']:1;
+        $ofset = ($current_page - 1) * $def;
 ?>
     <div id="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+
+
                     <!-- post-container -->
                     <div class="post-container">
-
                         <?php
-
-                            $sql_command = "SELECT p_id, p_title, p_description, c.cname, u.first_name, u.last_name, p.p_date, p_image FROM `post` p LEFT JOIN category c ON p.p_category = c.cid LEFT JOIN users u ON p.p_author = u.id";
+                            $sql_command = "SELECT p_id, p_title, p_description, c.cname, u.first_name, u.last_name, p.p_date, p_image, p_author FROM `post` p LEFT JOIN category c ON p.p_category = c.cid LEFT JOIN users u ON p.p_author = u.id LIMIT {$ofset},{$def}";
                             $result  = mysqli_query($connection, $sql_command);
                             if(mysqli_num_rows($result) > 0){
                                 while($row = mysqli_fetch_assoc($result)){
@@ -22,7 +24,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="inner-content clearfix">
-                                                    <h3><a href='single.php'><?php echo $row['p_title']; ?></a></h3>
+                                                    <h3><a href='single.php?post=<?php echo $row['p_id']?>'><?php echo $row['p_title']; ?></a></h3>
                                                     <div class="post-information">
                                                         <span>
                                                             <i class="fa fa-tags" aria-hidden="true"></i>
@@ -30,7 +32,7 @@
                                                         </span>
                                                         <span>
                                                             <i class="fa fa-user" aria-hidden="true"></i>
-                                                            <a href='author.php'><?php echo $row['first_name']." ".$row['last_name']; ?></a>
+                                                            <a href='author.php?author=<?php echo $row['p_author']; ?>'><?php echo $row['first_name']." ".$row['last_name']; ?></a>
                                                         </span>
                                                         <span>
                                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -38,7 +40,7 @@
                                                         </span>
                                                     </div>
                                                     <p class="description">
-                                                        <?php echo $row['p_description']; ?>
+                                                        <?php echo substr($row['p_description'],0,100)."..."; ?>
                                                     </p>
                                                     <a class='read-more pull-right' href='single.php?post=<?php echo $row['p_id'];?>'>read more</a>
                                                 </div>
@@ -48,15 +50,25 @@
 
                         <?php
                                 }
+                            }else{
+                                echo "<div class='alert alert-danger' role='alert'>No Record Found!</div>";
                             }
                         ?>
 
-
+                        
+                        <!-- Pagination -->
                         <ul class='pagination'>
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
+                            <?php
+                                $sql = "SELECT * FROM post";
+                                $result = mysqli_query($connection,$sql);
+                                $total_page = mysqli_num_rows($result);
+                                for($i = 1; $i<=ceil($total_page/$def); $i++){
+                                    $active = ($current_page==$i)?"active":"";
+                                    echo "<li class='".$active."'><a href='".$_SERVER['PHP_SELF']."?user=".$i."'>".$i."</a></li>";
+                                }
+                            ?>
                         </ul>
+                        <!-- Pagination -->
                     </div><!-- /post-container -->
                 </div>
                 <?php include 'sidebar.php'; ?>

@@ -1,3 +1,11 @@
+<?php       
+    include 'config.php';  
+    $query = "SELECT * FROM settings";
+    $result24 = mysqli_query($connection,$query);
+    if(mysqli_num_rows($result24)>0){
+        $row123 = mysqli_fetch_assoc($result24);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,7 +36,7 @@
                 <div class="row">
                     <!-- LOGO -->
                     <div class="col-md-2">
-                        <a href="./" id="logo" class="h3"><b>DARKBLOG</b></a>
+                        <a href="./../" id="logo" class="h3"><b><?php echo $row123['site_name'];?></b></a>
                     </div>
                     <!-- /LOGO -->
                       <!-- LOGO-Out -->
@@ -48,13 +56,16 @@
                     <div class="col-md-12">
                        <ul class="admin-menu">
                             <li>
-                                <a href="post.php?">Post</a>
+                                <a href="post.php">Post</a>
                             </li>
                             <li>
                                 <a href="category.php">Category</a>
                             </li>
                             <li>
                                 <a href="users.php">Users</a>
+                            </li>
+                            <li>
+                                <a href="settings.php">Settings</a>
                             </li>
                         </ul>
                     </div>

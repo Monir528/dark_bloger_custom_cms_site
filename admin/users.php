@@ -1,6 +1,5 @@
 <?php
     include "header.php"; 
-    include('config.php');
 
     $def = 3;
     $current_page = (isset($_GET['user']))?$_GET['user']:1;
@@ -64,4 +63,4 @@
           </div>
       </div>
   </div>
-<?php include "header.php"; ?>
+<?php include "footer.php"; ?>

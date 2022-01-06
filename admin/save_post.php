@@ -1,5 +1,5 @@
 <?php
-
+    
     include "config.php";
 
     $file_name = $_FILES['fileToUpload']['name'];
@@ -19,27 +19,28 @@
     }
 
     if(empty($error)){
-        
         move_uploaded_file($tmp_name,"upload/".$file_name);
 
         session_start();
-        $title = $_POST['post_title'];
-        $des = $_POST['postdesc'];
+        $title = mysqli_real_escape_string($connection, $_POST['post_title']);
+        $des = mysqli_real_escape_string($connection, $_POST['postdesc']);
         $ctg = $_POST['category'];
         $author = $_SESSION['user_id'];
         $time = date("d M, y");
 
         $sql = "INSERT INTO post(p_title, p_description, p_category, p_author, p_date, p_image)".
-        "VALUES('{$title}', '{$des}', '{$ctg}', '{$author}', '{$time}', '{$file_name}');";
+        "VALUES('{$title}', '{$des}', {$ctg}, {$author}, '{$time}', '{$file_name}');";
         $sql .= "UPDATE category SET cpost = cpost+1 WHERE cid = {$ctg}";
 
-        $result = mysqli_multi_query($connection, $sql);
+        $result =  print_r( mysqli_multi_query($connection, $sql));
         if($result){
             header("location: http://localhost//PHP/Project/news/Blog_Site/admin/post.php");
         }else{
             echo "Query failed!";
         }
+        echo $sql;
     }else{
         print_r($error);
     }
+    error_reporting(E_ALL & ~ E_NOTICE);
 ?>
